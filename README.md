@@ -102,12 +102,16 @@ int main(void)
 
 int sum(int count, ...)
 {
+    int i;
+    int sum;
+    int arg;
     va_list args;
     va_start(args, count);
-    int sum = 0;
-    for (int i = 0; i &lt; count; i++) {
-        sum += va_arg(args, int);
-    }
+    
+    i = 0;
+    sum = 0;
+    while ((arg = va_arg(args, int)) != -1)
+        sum += arg;
     va_end(args);
     return sum;
 }</code></pre>

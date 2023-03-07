@@ -104,14 +104,12 @@ int sum(int count, ...)
 {
     int i;
     int sum;
-    int arg;
     va_list args;
     va_start(args, count);
-    
-    i = 0;
     sum = 0;
-    while ((arg = va_arg(args, int)) != -1)
-        sum += arg;
+    i = -1;
+    while(++i < 3)
+        sum += va_arg(args, int);
     va_end(args);
     return sum;
 }</code></pre>

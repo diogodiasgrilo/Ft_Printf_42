@@ -109,7 +109,9 @@ int sum(int count, ...)
     sum = 0;
     i = -1;
     while(++i < 3)
+    {
         sum += va_arg(args, int);
+    }
     va_end(args);
     return sum;
 }</code></pre>

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num_hex_upper.c                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 18:27:55 by diogpere          #+#    #+#             */
-/*   Updated: 2023/04/12 10:30:35 by diogpere         ###   ########.fr       */
+/*   Created: 2023/03/05 18:28:22 by diogpere          #+#    #+#             */
+/*   Updated: 2023/04/12 10:31:01 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_num_hex_upper(unsigned int n, long int *counter)
+void	ft_putnbr(int n, long int *counter)
 {
-	if (n >= 16)
-		ft_print_num_hex_upper(n / 16, counter);
-	if (n % 16 < 10)
-		ft_putchar(n % 16 + '0', counter);
-	else
-		ft_putchar(n % 16 + 'A' - 10, counter);
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648", counter);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-', counter);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10, counter);
+	ft_putchar(n % 10 + '0', counter);
 }

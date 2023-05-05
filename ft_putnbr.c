@@ -6,19 +6,14 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:28:22 by diogpere          #+#    #+#             */
-/*   Updated: 2023/04/12 10:31:01 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/04/12 12:41:23 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n, long int *counter)
+void	ft_putnbr(long int n, long int *counter)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648", counter);
-		return ;
-	}
 	if (n < 0)
 	{
 		ft_putchar('-', counter);

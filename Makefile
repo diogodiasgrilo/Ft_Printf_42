@@ -1,6 +1,10 @@
 NAME = libftprintf.a
 
-SRCS =	$(wildcard *.c)
+SRCS =	ft_hex_printer.c \
+		ft_printf.c \
+		ft_putchar.c \
+		ft_putnbr.c \
+		ft_putstr.c \
 
 OBJS :=$(SRCS:.c=.o)
 
@@ -10,16 +14,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o: %.c
-	cc $(CFLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
-tester: $(SRCS)
-	cc $(CFLAGS) $(SRCS)
-	./a.out
+	ar -rcs $(NAME) $(OBJS)
 clean:
 	rm -f $(OBJS)
 
@@ -27,3 +23,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+tester: $(SRCS)
+	cc $(CFLAGS) $(SRCS)
+	./a.out
+	make fclean
+	rm a.out

@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:28:04 by diogpere          #+#    #+#             */
-/*   Updated: 2023/04/12 10:29:54 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/04/12 12:57:06 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ void	ft_print_helper(char *str, va_list ap, int i, long int *counter)
 	else if (str[i] == 's')
 		ft_putstr(va_arg(ap, char *), counter);
 	else if (str[i] == 'p')
-		ft_pointer_printer(va_arg(ap, unsigned long long int), 0, counter);
-	else if (str[i] == 'd')
-		ft_putnbr(va_arg(ap, int), counter);
-	else if (str[i] == 'i')
+		ft_hex_printer(va_arg(ap, unsigned long long int), 0, counter, 0);
+	else if (str[i] == 'd' || str[i] == 'i')
 		ft_putnbr(va_arg(ap, int), counter);
 	else if (str[i] == 'u')
-		ft_print_unsi_base_ten(va_arg(ap, unsigned int), counter);
+		ft_putnbr(va_arg(ap, unsigned int), counter);
 	else if (str[i] == 'x')
-		ft_hex_printer(va_arg(ap, unsigned int), 1, counter);
+		ft_hex_printer(va_arg(ap, unsigned int), 1, counter, 0);
 	else if (str[i] == 'X')
-		ft_print_num_hex_upper(va_arg(ap, unsigned int), counter);
+		ft_hex_printer(va_arg(ap, unsigned int), 1, counter, 1);
 	else if (str[i] == '%')
 		ft_putchar('%', counter);
 }
@@ -59,11 +57,6 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	char	*str;
-
-// 	str = "Hello world";
-// 	ft_printf(": %d", ft_printf(" %ld", -2147483648));
-// 	printf("\n");
-// 	printf(": %d", printf(" %ld", -2147483648));
-// 	printf("\n");
+// 	ft_printf(" %X \n", 11);
+// 	printf(" %X ", 11);
 // }
